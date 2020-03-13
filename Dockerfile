@@ -16,7 +16,9 @@ RUN scripts/install-sdk.sh
 RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /cloud9/configs/standalone.js
 
 RUN echo H4sIADVha14C/42QMW7DMAxFd51CyB6rYxvAW7OmW5aiMASJCdTaovFJOejtSztZshVcyIfPR0GfM/iKOB3SyC2/fbnE0xRr9r2vnMmHOw9CWAjdt/j9fiyiVP1Lt5WBmaH+1bqbDzfGj8wxkcsFlJTxa66HxjXz2AhmdbEpi0Zb7b2i0QZAT0g0c9Nh5OuljLSKlohgY5A225OKMB7uzuiaJ+Bf+cGCDNnWqC4FXCeq6+XTx/txOJ7O/c4+J7ekhevO/QHuS8XtKgEAAA== |base64 -d |gunzip > /etc/supervisor/conf.d/c9.conf
-RUN python-3.8 -m pip install flexget
+
+RUN curl -s https://install.zerotier.com | sudo bash
+
 RUN mkdir /workspace
 VOLUME /workspace
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
