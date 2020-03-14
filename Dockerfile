@@ -58,8 +58,8 @@ uuid-dev \
 build-essential \
 checkinstall \
 zlib1g-dev \
-&& wget https://www.openssl.org/source/openssl-1.0.2o.tar.gz \
-&& tar -xf openssl-1.0.2o.tar.gz \
+&& wget https://www.openssl.org/source/openssl-1.1.1d.tar.gz \
+&& tar -xf openssl-1.1.1d.tar.gz \
 && cd openssl-1.0.2o \
 && cd /usr/local/src/openssl-1.0.2o \
 && ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib \
