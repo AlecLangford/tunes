@@ -1,4 +1,4 @@
-FROM kdelfour/supervisor-docker
+FROM python:3.7.7-alpine3.10
 RUN apt-get update
 RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs openvpn zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libreadline-dev libffi-dev wget tmux
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
