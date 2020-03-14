@@ -31,9 +31,9 @@ RUN curl -s https://install.zerotier.com | sudo bash
 RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl \
 && chmod a+rx /usr/local/bin/youtube-dl
 
-RUN add-apt-repository ppa:transmissionbt/ppa \
-&& apt-get update \
-&& apt-get install transmission-cli transmission-common transmission-daemon
+#RUN add-apt-repository ppa:transmissionbt/ppa \
+#&& apt-get update \
+#&& apt-get install transmission-cli transmission-common transmission-daemon
 
 ADD supervised_apps.conf /etc/supervisor/conf.d/
 
