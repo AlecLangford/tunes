@@ -60,12 +60,12 @@ checkinstall \
 zlib1g-dev \
 && wget https://www.openssl.org/source/openssl-1.1.1d.tar.gz \
 && tar -xf openssl-1.1.1d.tar.gz \
-&& cd openssl-1.0.2o \
-&& cd /usr/local/src/openssl-1.0.2o \
+&& cd openssl-1.1.1d \
+&& cd /usr/local/src/openssl-1.1.1d \
 && ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib \
 && make \
 && make install \
-&& cd ..;rm -rf openssl-1.0.2o \
+&& cd ..;rm -rf openssl-1.1.1d \
 && curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz \
 && tar -xf Python-3.8.2.tar.xz \
 && cd Python-3.8.2 \
