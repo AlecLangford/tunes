@@ -68,6 +68,7 @@ RUN set -ex \
 		util-linux-dev \
 		xz-dev \
 		zlib-dev \
+		yasm \
 # add build deps before removing fetch deps in case there's overlap
 	&& apk del --no-network .fetch-deps \
 	\
@@ -144,7 +145,7 @@ CMD ["python3"]
 
 
 
-RUN apt update && apt install yasm && git clone git://git.libav.org/libav.git && cd libav && ./configure && make && make install && cd .. && rm -rf libav
+RUN git clone git://git.libav.org/libav.git && cd libav && ./configure && make && make install && cd .. && rm -rf libav
 
 
 
