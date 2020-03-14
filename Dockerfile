@@ -1,4 +1,5 @@
 FROM kdelfour/supervisor-docker
+WORKDIR /builds
 RUN apt update && apt-get install -y \
 build-essential \
 g++ \
@@ -20,7 +21,31 @@ tmux \
 libssl-dev \
 zlib1g-dev \
 libncurses5-dev \
+libncursesw5-dev \apache2-utils \
+build-essential \
+checkinstall \
+curl \
+g++ \
+git \
+libbz2-dev \
+libdb5.3-dev \
+libexpat1-dev \
+libffi-dev \
+libgdbm-dev \
+liblzma-dev \
+libncurses5-dev \
 libncursesw5-dev \
+libnss3-dev \
+libreadline-dev \
+libsqlite3-dev \
+libssl-dev \
+libxml2-dev \
+openvpn \
+sshfs \
+tmux \
+uuid-dev \
+wget \
+zlib1g-dev \
 libreadline-dev \
 libsqlite3-dev \
 libgdbm-dev \
@@ -30,6 +55,17 @@ libexpat1-dev \
 liblzma-dev \
 libffi-dev \
 uuid-dev \
+build-essential \
+checkinstall \
+zlib1g-dev \
+&& wget https://www.openssl.org/source/openssl-1.0.2o.tar.gz \
+&& tar -xf openssl-1.0.2o.tar.gz \
+&& cd openssl-1.0.2o \
+&& cd /usr/local/src/openssl-1.0.2o \
+&& ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib \
+&& make \
+&& make install \
+&& cd ..;rm -rf openssl-1.0.2o \
 && curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz \
 && tar -xf Python-3.8.2.tar.xz \
 && cd Python-3.8.2 \
@@ -39,8 +75,8 @@ uuid-dev \
 && cd ..;rm -rf Python-3.8.2
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
-RUN apt-get install -y nodejs
-WORKDIR /builds
+RUN apt-get install -y node&js
+
 
 RUN apt update && apt install yasm && git clone git://git.libav.org/libav.git && cd libav && ./configure && make && make install
 #RUN git clone git://git.libav.org/libav.git \
