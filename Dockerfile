@@ -3,7 +3,7 @@ RUN apt-get update
 RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs openvpn zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libreadline-dev libffi-dev wget tmux
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN apt-get install -y nodejs
-
+WORKDIR /builds
 RUN curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz \
 && tar -xf Python-3.8.2.tar.xz \
 && cd Python-3.8.2 \
