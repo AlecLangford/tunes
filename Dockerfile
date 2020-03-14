@@ -1,8 +1,8 @@
 FROM kdelfour/supervisor-docker
 FROM python:3.7.5-slim
-from linuxserver/transmission
-from python:3.7.7-alpine3.10
-from rudloff/alltube:latest
+FROM linuxserver/transmission
+FROM python:3.7.7-alpine3.10
+FROM rudloff/alltube:latest
 
 RUN apt-get update
 RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs openvpn zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libreadline-dev libffi-dev wget tmux
