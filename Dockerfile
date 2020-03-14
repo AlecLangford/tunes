@@ -75,7 +75,7 @@ zlib1g-dev \
 && cd ..;rm -rf Python-3.8.2
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
-RUN apt-get install -y node&js
+RUN apt-get install -y nodejs
 
 
 RUN apt update && apt install yasm && git clone git://git.libav.org/libav.git && cd libav && ./configure && make && make install
