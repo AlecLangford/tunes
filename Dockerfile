@@ -3,6 +3,7 @@ FROM python:3.7.5-slim
 FROM linuxserver/transmission
 FROM python:3.7.7-alpine3.10
 FROM rudloff/alltube:latest
+FROM kdelfour/supervisor-docker
 
 RUN apt-get update
 RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs openvpn zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libreadline-dev libffi-dev wget tmux
