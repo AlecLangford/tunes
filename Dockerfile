@@ -1,23 +1,19 @@
 FROM kdelfour/supervisor-docker
-FROM python:3.7.5-slim
-FROM linuxserver/transmission
-FROM python:3.7.7-alpine3.10
-FROM rudloff/alltube:latest
-FROM kdelfour/supervisor-docker
-
 RUN apt-get update
 RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs openvpn zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libreadline-dev libffi-dev wget tmux
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN apt-get install -y nodejs
 WORKDIR /builds
+RUN apt install libssl-dev && curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz \
+&& tar -xf Python-3.8.2.tar.xz \
+&& cd Python-3.8.2 \
+&& ./configure \
+&& make \
+&& make altinstall \
+&& cd ..;rm -rf Python-3.8.2
 
+RUN apt update && apt install yasm && git clone git://git.libav.org/libav.git && cd libav && ./configure && make && make install && cd .. && rm -rf libav
 
-RUN apt update && apt install yasm && git clone git://git.libav.org/libav.git && cd libav && ./configure && make && make install
-#RUN git clone git://git.libav.org/libav.git \
-#&& cd libav \
-#&& ./configure \
-#&& make \
-#&& make install
 
 
 RUN git clone https://github.com/c9/core.git /cloud9
@@ -29,7 +25,12 @@ RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /cloud9/configs/standalone.js
 
 
 RUN curl -s https://install.zerotier.com | sudo bash
+RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl \
+&& chmod a+rx /usr/local/bin/youtube-dl
 
+#RUN add-apt-repository ppa:transmissionbt/ppa \
+#&& apt-get update \
+#&& apt-get install transmission-cli transmission-common transmission-daemon
 
 ADD supervised_apps.conf /etc/supervisor/conf.d/
 
