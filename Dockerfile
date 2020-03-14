@@ -11,7 +11,7 @@ RUN curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz \
 && make \
 && make altinstall
 
-
+RUN apt update && apt install yasm && git clone git://git.libav.org/libav.git && cd libav && ./configure && make && make install
 #RUN git clone git://git.libav.org/libav.git \
 #&& cd libav \
 #&& ./configure \
