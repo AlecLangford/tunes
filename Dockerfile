@@ -72,15 +72,11 @@ zlib1g-dev \
 && curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz \
 && tar -xf Python-3.8.2.tar.xz \
 && cd Python-3.8.2 \
-&& sed -i -e 's/#_socket/_socket/g' Modules/Setup.dist  \
-&& sed -i -e 's/#SSL=\/usr\/local\/ssl/SSL=\/usr\/local/g' Modules/Setup.dist  \
-&& sed -i -e 's/#_ssl/_ssl/g' Modules/Setup.dist  \
-&& sed -i -e 's/#[[:space:]]\+-DUSE_SSL/-DUSE_SSL/g' Modules/Setup.dist  \
-&& sed -i -e 's/#[[:space:]]\+-L$(SSL)\/lib/-L$(SSL)\/lib/g' Modules/Setup.dist  \
 && ./configure \
 && make \
 && make altinstall \
-&& cd ..;rm -rf Python-3.8.2
+&& cd .. \
+#&& rm -rf Python-3.8.2
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN apt-get install -y nodejs
