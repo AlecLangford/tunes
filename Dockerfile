@@ -6,6 +6,7 @@ RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git lib
 && ./configure \
 && make \
 && make altinstall
+&& cd ..;rm -rf Python-3.8.2
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN apt-get install -y nodejs
