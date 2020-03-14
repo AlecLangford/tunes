@@ -21,7 +21,8 @@ tmux \
 libssl-dev \
 zlib1g-dev \
 libncurses5-dev \
-libncursesw5-dev \apache2-utils \
+libncursesw5-dev \
+apache2-utils \
 build-essential \
 checkinstall \
 curl \
