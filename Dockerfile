@@ -75,7 +75,7 @@ zlib1g-dev \
 && ./configure \
 && make \
 && make altinstall \
-&& cd .. \
+&& cd ..
 #&& rm -rf Python-3.8.2
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
