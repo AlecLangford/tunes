@@ -2,6 +2,7 @@ FROM kdelfour/supervisor-docker
 WORKDIR /builds
 RUN apt update && apt-get install -y \
 build-essential \
+ca-certificates \
 g++ \
 curl \
 libssl-dev \
