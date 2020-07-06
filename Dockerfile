@@ -60,7 +60,8 @@ libffi-dev \
 uuid-dev \
 build-essential \
 checkinstall \
-zlib1g-dev
+zlib1g-dev \
+software-properties-common && add-apt-repository ppa:deadsnakes/ppa -y
 
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
