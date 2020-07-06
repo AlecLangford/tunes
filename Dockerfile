@@ -63,28 +63,11 @@ checkinstall \
 zlib1g-dev
 
 
-RUN apt-get purge -y python.* && \
-    echo "deb http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu xenial main" >> /etc/apt/sources.list && \
-    echo "deb-src http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu xenial main" >> /etc/apt/sources.list && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FF3997E83CD969B409FB24BC5BB92C09DB82666C && \
-    apt-get update && \
-    apt-get install -y python3.3 && \
-    python3.6 /get-pip.py && \
-    pip install --upgrade pip && \
-    ln -s /usr/bin/python3.6 /usr/bin/python && \
-    rm -f /get-pip.py && \
-    rm -rf /var/lib/apt/lists/*
-
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN apt-get install -y nodejs
 
 
-RUN apt update && apt install yasm && git clone git://git.libav.org/libav.git && cd libav && ./configure && make && make install
-#RUN git clone git://git.libav.org/libav.git \
-#&& cd libav \
-#&& ./configure \
-#&& make \
-#&& make install
+RUN apt-get update && apt-get install yasm libav-tools
 
 
 RUN git clone https://github.com/c9/core.git /cloud9
@@ -99,9 +82,9 @@ RUN curl -s https://install.zerotier.com | sudo bash
 RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl \
 && chmod a+rx /usr/local/bin/youtube-dl
 
-#RUN add-apt-repository ppa:transmissionbt/ppa \
-#&& apt-get update \
-#&& apt-get install transmission-cli transmission-common transmission-daemon
+RUN add-apt-repository ppa:transmissionbt/ppa \
+&& apt-get update \
+&& apt-get install transmission-cli transmission-common transmission-daemon
 
 ADD supervised_apps.conf /etc/supervisor/conf.d/
 
