@@ -79,8 +79,8 @@ RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /cloud9/configs/standalone.js
 
 
 RUN curl -s https://install.zerotier.com | sudo bash
-RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl \
-&& chmod a+rx /usr/local/bin/youtube-dl
+#RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl \
+#&& chmod a+rx /usr/local/bin/youtube-dl
 
 RUN add-apt-repository ppa:transmissionbt/ppa \
 && apt-get update \
