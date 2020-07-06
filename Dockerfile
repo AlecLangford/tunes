@@ -1,6 +1,6 @@
 FROM kdelfour/supervisor-docker
 WORKDIR /builds
-RUN apt update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
 build-essential \
 ca-certificates \
 g++ \
@@ -67,7 +67,7 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN apt-get install -y nodejs
 
 
-RUN apt-get update && apt-get install yasm libav-tools
+#RUN apt-get update && apt-get install yasm libav-tools
 
 
 RUN git clone https://github.com/c9/core.git /cloud9
