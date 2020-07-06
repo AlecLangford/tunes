@@ -60,24 +60,20 @@ libffi-dev \
 uuid-dev \
 build-essential \
 checkinstall \
-zlib1g-dev \
-&& wget https://www.openssl.org/source/openssl-1.1.1d.tar.gz \
-&& tar -xf openssl-1.1.1d.tar.gz \
-&& cd openssl-1.1.1d \
-&& cd /usr/local/src/openssl-1.1.1d \
-&& ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib \
-&& make \
-&& make install \
-&& ldconfig \
-&& cd ..;rm -rf openssl-1.1.1d \
-&& curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz \
-&& tar -xf Python-3.8.2.tar.xz \
-&& cd Python-3.8.2 \
-&& ./configure \
-&& make \
-&& make altinstall \
-&& cd ..
-#&& rm -rf Python-3.8.2
+zlib1g-dev
+
+
+RUN apt-get purge -y python.* && \
+    echo "deb http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu xenial main" >> /etc/apt/sources.list && \
+    echo "deb-src http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu xenial main" >> /etc/apt/sources.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FF3997E83CD969B409FB24BC5BB92C09DB82666C && \
+    apt-get update && \
+    apt-get install -y python3.3 && \
+    python3.6 /get-pip.py && \
+    pip install --upgrade pip && \
+    ln -s /usr/bin/python3.6 /usr/bin/python && \
+    rm -f /get-pip.py && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
 RUN apt-get install -y nodejs
@@ -113,4 +109,5 @@ RUN mkdir /workspace
 VOLUME /workspace
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 EXPOSE 80
+EXPOSE 9091 
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
