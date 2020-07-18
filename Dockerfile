@@ -1,29 +1,6 @@
 FROM kdelfour/supervisor-docker
 WORKDIR /builds
-RUN apt-get update && apt-get install -y \
-build-essential \
-ca-certificates \
-g++ \
-curl \
-libssl-dev \
-apache2-utils \
-git \
-libxml2-dev \
-sshfs \
-openvpn \
-zlib1g-dev \
-libncurses5-dev \
-libgdbm-dev \
-libnss3-dev \
-libreadline-dev \
-libffi-dev \
-wget \
-tmux \
-libssl-dev \
-zlib1g-dev \
-libncurses5-dev \
-libncursesw5-dev \
-apache2-utils \
+RUN add-apt-repository ppa:deadsnakes/ppa -y && apt-get update && apt-get install -y \
 build-essential \
 checkinstall \
 curl \
@@ -48,20 +25,8 @@ sshfs \
 tmux \
 uuid-dev \
 wget \
-zlib1g-dev \
-libreadline-dev \
-libsqlite3-dev \
-libgdbm-dev \
-libdb5.3-dev \
-libbz2-dev \
-libexpat1-dev \
-liblzma-dev \
-libffi-dev \
-uuid-dev \
-build-essential \
-checkinstall \
-zlib1g-dev \
-software-properties-common && add-apt-repository ppa:deadsnakes/ppa -y
+software-properties-common \
+python3.6
 
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
@@ -85,9 +50,9 @@ RUN curl -s https://install.zerotier.com | sudo bash
 #RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl \
 #&& chmod a+rx /usr/local/bin/youtube-dl
 
-#RUN add-apt-repository ppa:transmissionbt/ppa \
-#&& apt-get update \
-#&& apt-get install transmission-cli transmission-common transmission-daemon
+RUN add-apt-repository ppa:transmissionbt/ppa \
+&& apt-get update \
+&& apt-get install transmission-cli transmission-common transmission-daemon
 
 ADD supervised_apps.conf /etc/supervisor/conf.d/
 
