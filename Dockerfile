@@ -27,7 +27,7 @@ uuid-dev \
 wget \
 software-properties-common
 
-RUN apt-get -y install software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get install -y python3.6 python3.6-dev python3.6-venv
+RUN apt-get -y install software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get update &&apt-get install -y python3.6 python3.6-dev python3.6-venv
 RUN apt-get -y install software-properties-common && add-apt-repository ppa:transmissionbt/ppa && apt-get install -y transmission-cli transmission-common transmission-daemon
 
 
