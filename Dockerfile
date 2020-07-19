@@ -25,10 +25,10 @@ sshfs \
 tmux \
 uuid-dev \
 wget \
-software-properties-common && add-apt-repository ppa:deadsnakes/ppa -y && apt-get update && apt-get install -y \
-python3.6\
-python3.6-dev\
-python3.6-venv
+software-properties-common
+
+RUN apt-get -y install software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get install -y python3.6 python3.6-dev python3.6-venv
+RUN apt-get -y install software-properties-common && add-apt-repository ppa:transmissionbt/ppa && apt-get install -y transmission-cli transmission-common transmission-daemon
 
 
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash -
@@ -41,8 +41,6 @@ RUN apt-get install -y nodejs
 RUN git clone https://github.com/c9/core.git /cloud9
 WORKDIR /cloud9
 
-#RUN apt-get -y install software-properties-common && add-apt-repository ppa:deadsnakes/ppa && apt-get install -y python3.6 python3.6-dev python3.6-venv
-RUN apt-get -y install software-properties-common && add-apt-repository ppa:transmissionbt/ppa && apt-get install -y transmission-cli transmission-common transmission-daemon
 
 RUN scripts/install-sdk.sh
 RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /cloud9/configs/standalone.js
